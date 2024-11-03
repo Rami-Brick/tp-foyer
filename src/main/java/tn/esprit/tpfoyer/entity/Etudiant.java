@@ -22,6 +22,7 @@ public class Etudiant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long idEtudiant;
 //first modification
+//second modification
     String nomEtudiant;
     String prenomEtudiant;
     long cinEtudiant;
