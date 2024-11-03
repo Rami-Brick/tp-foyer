@@ -21,7 +21,7 @@ public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long idEtudiant;
-
+//first modification
     String nomEtudiant;
     String prenomEtudiant;
     long cinEtudiant;
