@@ -23,10 +23,20 @@ services:
     depends_on:
       - mysqldb
     build: ./
-   ## image: islemamor01/intership:latest
+    image: ramibrick/tp-foyer:latest
     restart: on-failure
     ports:
       - "8089:8089"
+    environment:
+      SPRING_APPLICATION_JSON: '{
+            "spring.datasource.url": "jdbc:mysql://mysqlDb:3306/rami?createDatabaseIfNotExist=true",
+            "spring.datasource.username": "root",
+            "spring.datasource.password": "",
+            "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQLDialect",
+            "spring.jpa.hibernate.ddl-auto": "update"
+          }'
+      stdin_open: true
+      tty: true
     volumes:
       - .m2:/root/.m2
 
