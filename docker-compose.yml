@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: rami
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      mynetwork:
+        ipv4_address: 192.168.50.4  # Specify the desired fixed IP address
+  app:
+    depends_on:
+      - mysqldb
+    build: ./
+   ## image: islemamor01/intership:latest
+    restart: on-failure
+    ports:
+      - "8089:8089"
+    volumes:
+      - .m2:/root/.m2
+
+    stdin_open: true
+    tty: true
+    networks:
+      mynetwork:
+        ipv4_address: 192.168.50.5  # Specify a different fixed IP address
+
+volumes:
+  db:
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/16
