@@ -15,7 +15,7 @@ services:
   app-kaddem:
     depends_on:
       - mysqlDb
-    image: ramibrick/tp-foyer:0.0.1  # Utilisez ici la version spécifique 0.0.1
+    image: ramibrick/tp-foyer:latest # Utilisez ici la version spécifique 0.0.1
     restart: on-failure
     ports:
       - "8082:8082"
