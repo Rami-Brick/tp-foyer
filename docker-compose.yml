@@ -34,8 +34,8 @@ services:
             "spring.datasource.password": "",
             "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQLDialect",
             "spring.jpa.hibernate.ddl-auto": "update",
-            "server.port=8082",
-            "server.address=0.0.0.0"
+            "server.port": "8082",
+            "server.address": "0.0.0.0"
           }'
       stdin_open: true
       tty: true
