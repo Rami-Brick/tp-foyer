@@ -45,3 +45,10 @@ services:
 
 volumes:
   db:
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.50.0/16
