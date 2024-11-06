@@ -5,8 +5,8 @@ services:
     image: mysql:5.7
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: "root"
-      MYSQL_DATABASE: pokerit
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_DATABASE: foyer
     ports:
       - "3313:3306"
     volumes:
@@ -18,10 +18,10 @@ services:
     image: ramibrick/tp-foyer:latest  # Utilisez ici la version spécifique 0.0.1
     restart: on-failure
     ports:
-      - "8082:8082"
+      - "8085:8085"
     environment:
       SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url": "jdbc:mysql://mysqlDb:3306/pokerit?createDatabaseIfNotExist=true",
+        "spring.datasource.url": "jdbc:mysql://mysqlDb:3306/foyer?createDatabaseIfNotExist=true",
         "spring.datasource.username": "root",
         "spring.datasource.password": "root",
         "spring.jpa.properties.hibernate.dialect": "org.hibernate.dialect.MySQL8Dialect",
