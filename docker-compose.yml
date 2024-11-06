@@ -44,7 +44,7 @@ services:
     tty: true
     networks:
       mynetwork:
-        ipv4_address: 192.168.50.5  # Specify a different fixed IP address
+        ipv4_address: 192.168.50.22  # Specify a different fixed IP address
 
 volumes:
   db:
