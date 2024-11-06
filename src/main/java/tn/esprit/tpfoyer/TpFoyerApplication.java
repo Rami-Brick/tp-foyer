@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.retry.annotation.EnableRetry;
 
 
 @SpringBootApplication
-@EnableScheduling
+//@EnableScheduling
+@EnableRetry
 @EnableAspectJAutoProxy
 public class TpFoyerApplication {
 
