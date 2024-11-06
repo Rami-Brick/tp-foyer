@@ -11,6 +11,14 @@ services:
       - "3313:3306"
     volumes:
       - db:/var/lib/mysql
+    healthcheck:
+        test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+        interval: 10s
+        timeout: 5s
+        retries: 5
+    networks:
+      mynetwork:
+        ipv4_address: 192.168.50.6  # Specify the desired fixed IP address
 
   app:
     depends_on:
@@ -31,6 +39,9 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
+    networks:
+      mynetwork:
+        ipv4_address: 192.168.50.22
 
 volumes:
   db:
